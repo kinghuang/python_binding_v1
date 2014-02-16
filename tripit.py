@@ -346,6 +346,10 @@ class TripIt(object):
                 base_url = '/'.join([self._api_url, self._api_version, verb])
 
         args = None
+        if url_args is None:
+            url_args = {'format':'json'}
+        else:
+        	url_args['format'] = 'json'	
         if url_args is not None:
             args = url_args
             url = base_url + '?' + urllib.urlencode(url_args)
@@ -387,7 +391,8 @@ class TripIt(object):
                 entity = None
 
         response_data = self._do_request(verb, entity, params, post_args)
-        return _xml_to_py(response_data)
+        #return _xml_to_py(response_data)
+        return json.load(response_data)
 
     def get_trip(self, id, filter=None):
         if filter is None:
