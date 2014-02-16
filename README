@@ -20,3 +20,8 @@ Example
     # Lists the authenticated user's upcoming trips
     t.list_trip()
     print t.response
+
+Fork Changes
+============
+
+Modified to specify json as the data format.
